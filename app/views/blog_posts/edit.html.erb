@@ -1,5 +1,5 @@
-<h1> EDIT</h1>
-<%= render partial: "form", locals: {blog_post: @blog_post} %>
+<h3>Edit post</h3>
 
-<%= button_to "Delete", @blog_post, method: :delete, data: {turbo_confirm:"Are you sure?"} %>
+<%= render partial: "blog_posts/form", locals: {post: @blog_post} %>
 
+<%= button_to "Delete post", @blog_post, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "button bg-red-500 hover:bg-red-700 font-bold text-white focus:outline-none py-2 px-4 rounded focus:shadow-outline w-full" %>

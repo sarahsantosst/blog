@@ -5,7 +5,6 @@ class BlogPostsController < ApplicationController
     
     def index
         @blog_posts = BlogPost.all
-
         @pagy, @blog_posts = pagy(@blog_posts)
     end
 
@@ -18,18 +17,18 @@ class BlogPostsController < ApplicationController
 
     def create 
         @blog_post = BlogPost.new(blog_post_params)
-      if  @blog_post.save
-        redirect_to @blog_post
-      else 
-        render :new, status: :unprocessable_entity
-      end
+        if  @blog_post.save
+            redirect_to @blog_post
+        else 
+            render :new, status: :unprocessable_entity
+        end
     end
 
     def edit
     end
 
     def update
-        if @blog_post = BlogPost.find(params[:id])
+        if @blog_post.update(blog_post_params)
             redirect_to @blog_post
         else 
             render :edit, status: :unprocessable_entity
@@ -37,7 +36,7 @@ class BlogPostsController < ApplicationController
     end
 
     def destroy
-        @blog_post = BlogPost.find(params[:id])
+        @blog_post.destroy
         redirect_to root_path
     end
 

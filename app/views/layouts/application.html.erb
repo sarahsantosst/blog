@@ -11,21 +11,41 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="prose mx-auto mb-16">
+  <body class="prose mx-auto">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-   
-   
-    <div>
-      <% if user_signed_in? %>
-      <% link_to "New blog post", new_blog_post_path %>
-      <%= link_to "Profile", edit_user_registration_path %>
-      <%= button_to "Log out", destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to "Login", new_user_session_path %>
-        <%= link_to "Sign Up", new_user_registration_path %>
-      <% end %>
-    </div>
+
+    <nav class="w-full">
+      <div class="flex items-center justify-between items-center">
+        <%= link_to "blog", root_path, class: "font-hairline uppercase no-underline text-2xl font-semibold" %>
+        <div class="w-auto">
+          <ul class="list-none font-medium flex flex-col m-0 px-2 border rounded-lg md:flex-row md:space-x-8">
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to "New post", new_blog_post_path, class: "no-underline block rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0" %>
+              </li>
+
+              <li>
+                <%= link_to "Profile", edit_user_registration_path, class: "no-underline block rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0" %>
+              </li>
+              
+              <li>
+                <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "no-underline block rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0" %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to "Login", new_user_session_path, class: "no-underline block rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0" %>
+              </li>
+
+              <li>
+                <%= link_to "Sign Up", new_user_registration_path, class: "no-underline block rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0" %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     <%= yield %>
   </body>
 </html>
