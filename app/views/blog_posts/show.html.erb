@@ -2,5 +2,5 @@
 <%= @blog_post.body %>
 
 <div class="my-4">
-  <%= link_to "Edit post", edit_blog_post_path(@blog_post), class: "button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline" if user_signed_in? %>
+  <%= link_to "Edit post", edit_blog_post_path(@blog_post), class: "button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline" if user_signed_in? && current_user == @blog_post.user %>
 </div>
