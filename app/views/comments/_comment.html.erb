@@ -1,0 +1,9 @@
+<div class="border rounded p-2">
+  <header class="flex items-center justify-between">
+    <span class="font-bold">Posted <%= time_ago_in_words(comment.created_at) %> ago by <% if comment.user %> <%= comment.user.email %> <% else %>anonymous<% end %></span>
+    <% if current_user.present? && current_user == comment.user %>
+      <%= button_to "X", [blog_post, comment], method: :delete, class: "button bg-red-500 hover:bg-red-700 text-white focus:outline-none px-2 rounded" %>
+    <% end %>
+  </header>
+  <%= comment.body %>
+</div>

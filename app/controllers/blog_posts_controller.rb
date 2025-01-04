@@ -9,6 +9,7 @@ class BlogPostsController < ApplicationController
     end
 
     def show
+        @comments = @blog_post.comments.order(created_at: :desc)
     end
 
     def new
@@ -52,11 +53,7 @@ class BlogPostsController < ApplicationController
 
     def set_blog_post
         @blog_post = BlogPost.find(params[:id])
-        rescue ActiveRecord::RecordNotFound
-            redirect_to root_path
-    end  
-
-    def authenticate_user!
-        redirect_to new_user_session_path, alert: "You must be sign in or sign up to continue." unless user_signed_in?
+    rescue ActiveRecord::RecordNotFound
+        redirect_to root_path
     end
 end
