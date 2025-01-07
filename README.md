@@ -1,5 +1,7 @@
 ## Blog
 
+### Live on: https://blog-uy6t.onrender.com/
+
 ### Prerequisites
 
 The setups steps expect following tools installed on the system.
